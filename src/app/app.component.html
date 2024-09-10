@@ -14,8 +14,7 @@
          <!-- <div>{{parsed_data | json}}</div> -->
  
          
-   
-         <h1>Display Nested JSON Data</h1>
+
          <div *ngFor="let key of objectKeys(parsed_data)">
           <!-- For primitive values (like strings or numbers) -->
           <div *ngIf="!isObject(parsed_data[key]) && !isArray(parsed_data[key])">
