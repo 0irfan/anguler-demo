@@ -1,0 +1,54 @@
+
+   <div class="col-md-5">
+            <div class="add-btn-wrapper">
+               <button (click)="fileInput.click()" class="btn-add"> <img src="assets/img/add-button.png"
+                     alt="">Parse Resume</button>
+               <input type="file" #fileInput style="display:none" (change)="onParseResume($event.target)">
+
+               <div *ngIf="file">
+                  <span class="file-text mx-5">{{file.name}}</span>
+               </div>
+            </div>
+
+         </div>
+         <!-- <div>{{parsed_data | json}}</div> -->
+ 
+         
+   
+         <h1>Display Nested JSON Data</h1>
+         <div *ngFor="let key of objectKeys(parsed_data)">
+          <!-- For primitive values (like strings or numbers) -->
+          <div *ngIf="!isObject(parsed_data[key]) && !isArray(parsed_data[key])">
+          <p><strong>{{ key }}:</strong> {{ parsed_data[key] }}</p>
+          </div>
+           
+            <!-- For nested objects -->
+          <div *ngIf="isObject(parsed_data[key])">
+          <p><strong>{{ key }}:</strong></p>
+          <div style="margin-left: 20px;">
+          <div *ngFor="let nestedKey of objectKeys(parsed_data[key])">
+          <p><strong>{{ nestedKey }}:</strong> {{ parsed_data[key][nestedKey] }}</p>
+          </div>
+          </div>
+          </div>
+           
+            <!-- For arrays -->
+          <div *ngIf="isArray(parsed_data[key])">
+          <p><strong>{{ key }}:</strong></p>
+          <ul style="margin-left: 20px;">
+          <!-- Iterate through the array -->
+          <li *ngFor="let item of parsed_data[key]">
+          <!-- Handle array of objects -->
+          <div *ngIf="isObject(item)">
+          <div *ngFor="let nestedKey of objectKeys(item)">
+          <p><strong>{{ nestedKey }}:</strong> {{ item[nestedKey] }}</p>
+          </div>
+          </div>
+          <!-- Handle array of primitive types -->
+          <div *ngIf="!isObject(item)">
+                    {{ item }}
+          </div>
+          </li>
+          </ul>
+          </div>
+          </div>
