@@ -1,8 +1,8 @@
 
-   <div class="col-md-5">
+   <div class="col-md-5" style="margin-top: 20px;margin-left:30px">
             <div class="add-btn-wrapper">
-               <button (click)="fileInput.click()" class="btn-add"> <img src="assets/img/add-button.png"
-                     alt="">Parse Resume</button>
+               <button (click)="fileInput.click()"
+                     alt="" style="background: gainsboro; border-radius: 10px; font-weight: bold;">Parse Resume</button>
                <input type="file" #fileInput style="display:none" (change)="onParseResume($event.target)">
 
                <div *ngIf="file">
@@ -15,7 +15,7 @@
  
          
 
-         <div *ngFor="let key of objectKeys(parsed_data)">
+         <div *ngFor="let key of objectKeys(parsed_data)" style="margin-top: 20px;margin-left:30px">
           <!-- For primitive values (like strings or numbers) -->
           <div *ngIf="!isObject(parsed_data[key]) && !isArray(parsed_data[key])">
           <p><strong>{{ key }}:</strong> {{ parsed_data[key] }}</p>

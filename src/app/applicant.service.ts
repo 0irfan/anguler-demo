@@ -11,7 +11,7 @@ export class ApplicantService {
   constructor(private http: HttpClient) {}
 
   parseResume(formData: FormData): Observable<any> {
-    return this.http.post<any>("http://20.161.64.95/parse/", formData);
+    return this.http.post<any>("https://www.test.dc3worx.ca/parse/", formData);
   }
 
 
